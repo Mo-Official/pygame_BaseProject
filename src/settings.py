@@ -1,5 +1,5 @@
 
-CAPTION = "Alchemist Town"
+CAPTION = "Game Title"
 
 FPS = 60
 
