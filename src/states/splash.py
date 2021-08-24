@@ -1,5 +1,5 @@
 import pygame as pg
-
+from pygame import event as pgevent
 from .base import BaseState
 
 class Splash(BaseState):
@@ -14,6 +14,11 @@ class Splash(BaseState):
         self.time_active += dt
         if self.time_active >= 5000:
             self.done = True
+
+    def get_event(self, event: pgevent.Event):
+        if event.type == pg.KEYUP:
+            self.done = True
+
 
     def draw(self, surface):
         surface.fill(pg.Color("black"))
