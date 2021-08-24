@@ -1,4 +1,6 @@
 import pygame as pg
+import pygame.font as pgfont
+from pygame import event as pgevent
 
 class BaseState(object):
     def __init__(self) -> None:
@@ -7,13 +9,14 @@ class BaseState(object):
         self.next_state = None
         self.screen_rect = pg.display.get_surface().get_rect()
         self.persist = {}
-        self.font = pg.font.Font(None, 24)
+        self.font: pgfont.Font = pg.font.Font(None, 24)
 
     def startup(self, persistent):
         self.persist = persistent
 
-    def get_event(self, event):
-        pass
+    def get_event(self, event: pgevent.Event):
+        if event.type == pg.QUIT:
+            self.quit = True
 
     def update(self, dt):
         pass
