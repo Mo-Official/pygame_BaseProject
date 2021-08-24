@@ -1,12 +1,15 @@
 from . import settings
 import pygame as pg
+import pygame.time as pgtime
+from pygame import event as pgevent
+
 
 class Game(object):
     def __init__(self, screen, states, start_state) -> None:
         self.done = False
         self.screen = screen
         self.caption = settings.CAPTION
-        self.clock = pg.time.Clock()
+        self.clock = pgtime.Clock()
         self.fps = settings.FPS
         self.now = 0.0
         self.states = states
@@ -45,6 +48,6 @@ class Game(object):
 
 
     def events(self):
-        for event in pg.event.get():
+        for event in pgevent.get():
             self.state.get_event(event)
 
